@@ -3,7 +3,7 @@ require('pry')
 
 class Tag
 
-  attr_reader :id
+  attr_reader :id, :type
 
   def initialize(options)
     @id = options['id'].to_i

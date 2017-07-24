@@ -3,11 +3,14 @@ require('pry')
 
 class Transaction
 
+  attr_reader :id, :merchant, :price, :date, :type, :tag_id
+
   def initialize(options)
     @id = options['id'].to_i
     @merchant = options['merchant']
     @price = options['price']
     @date = options['date']
+    @type = options['type']
     @tag_id = options['tag_id']
   end
 
@@ -33,6 +36,15 @@ class Transaction
     sum = SqlRunner.run(sql)
     @total = sum[0]['sum']
   end
+
+  def self.find_all_with_type
+    # sql = "SELECT tags.type, transactions.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id"
+    sql = "SELECT transactions.*, tags.type FROM tags, transactions WHERE transactions.tag_id = tags.id"
+    transactions = SqlRunner.run(sql)
+    return transactions.map{|transaction| Transaction.new(transaction)}
+  end
+
+
 
   # how does the above return a key value pair? what part creates a hash? because i have not created a columnn called 'sum'.
 
