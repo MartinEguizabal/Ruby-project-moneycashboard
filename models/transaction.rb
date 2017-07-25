@@ -11,8 +11,8 @@ class Transaction
     @merchant = options['merchant']
     @price = options['price']
     @date = options['date']
-    @type = options['type'] if options['type']
-    @tag_id = options['tag_id']
+    # @type = options['type'] if options['type']
+    @tag_id = options['tag_id'] if options['tag_id']
   end
 
   def save()
@@ -20,6 +20,12 @@ class Transaction
 
     transaction = SqlRunner.run(sql)
     @id = transaction[0]['id'].to_i
+  end
+
+  def tag()
+    sql = "SELECT tags.* FROM tags WHERE tags.id = #{@tag_id};"
+    tag = SqlRunner.run(sql)
+    return Tag.new(tag[0])
   end
 
   def update()
@@ -55,12 +61,12 @@ class Transaction
     @total = sum[0]['sum']
   end
 
-  def self.find_all_with_type
-    # sql = "SELECT tags.type, transactions.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id"
-    sql = "SELECT transactions.*, tags.type FROM tags, transactions WHERE transactions.tag_id = tags.id"
-    transactions = SqlRunner.run(sql)
-    return transactions.map{|transaction| Transaction.new(transaction)}
-  end
+  # def self.find_all_with_type
+  #   # sql = "SELECT tags.type, transactions.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id"
+  #   sql = "SELECT transactions.*, tags.type FROM tags, transactions WHERE transactions.tag_id = tags.id"
+  #   transactions = SqlRunner.run(sql)
+  #   return transactions.map{|transaction| Transaction.new(transaction)}
+  # end
 
 
 

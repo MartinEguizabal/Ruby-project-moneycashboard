@@ -1,15 +1,25 @@
-<form method="post" action="/transactions">
+<form method="post" action="/transactions/<%= @transaction.id %>">
   <fieldset>
     <legend>Edit transaction details:</legend>
-      Date: <br>
-      <input type="date" name="date"><br>
-      Merchant: <br>
-      <input type="text" name="merchant"><br>
-      Type: <br>
-      <input type="text" name="type"><br>
-      Price: <br>
-      <input type="text" name="price">
+      <label for="date-field">Date:</label>
+      <input type="date" name="date" id="date-field" value="<%= @transaction.date %>"><br>
+
+      <label for="merchant-field">Merchant:</label>
+      <input type="text" name="merchant" id="merchant-field" value="<%= @transaction.merchant %>"><br>
+
+      <label for="type-selection">Type:</label>
+
+        <select name="tag_id" id="type-selection">
+          <% @tags.each do |tag| %>
+            <option value=<%= tag.id %>><%= tag.name %></option>
+          <% end %>
+        </select>
+        <br>
+
+      <label for="price-field">Price:</label>
+      <input type="price" name="price" id="price-field" value="<%= @transaction.price %>"><br>
 
       <input type="submit" value="Edit"
+      
   </fieldset>
 </form>

@@ -9,12 +9,9 @@
     <input type="text" name="price"><br>
     Type:<br>
     <select name="tag_id">
-      <option value="Food">Food</option>
-      <option value="Clothing">Clothing</option>
-      <option value="Furniture">Furniture</option>
-
-      <% @transactions.each do |transaction| %>
-        <option value=<% transaction.type %> > <% transaction.tag_id %> </option>
+     
+      <% @tags.each do |tag| %>
+        <option value=<%= tag.id %>><%= tag.name %></option>
       <% end %>
 
     </select>

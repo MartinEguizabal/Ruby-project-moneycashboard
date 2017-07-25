@@ -3,7 +3,7 @@ DROP TABLE tags;
 
 CREATE TABLE tags (
   id SERIAL4 PRIMARY KEY,
-  type VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE transactions (

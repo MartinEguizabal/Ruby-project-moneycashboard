@@ -13,7 +13,7 @@
           <td><a href="/transactions/<%= transaction.id %>"><%= transaction.id %></a></td>
           <td><%= transaction.date %></td> 
           <td><%= transaction.merchant %></td>
-          <td><%= transaction.type %></td>
+          <td><%= transaction.tag.name %></td>
           <td><%= transaction.price %></td>
           <td>
             <form action="/transactions/<%= transaction.id %>/edit" method="GET"><input type="submit" value="Edit" /></form>
@@ -27,5 +27,13 @@
       <td>Total</td>
       <td><%= @total %></td>
     </tr>
+</table>
 
+<h1>Transactions by Type:</h1>
+
+<table>    
+  <tr>
+
+  <td><%= @total_by_type %></td>
+    </tr>
 </table>

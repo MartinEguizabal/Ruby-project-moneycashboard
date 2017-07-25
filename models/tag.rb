@@ -3,21 +3,21 @@ require('pry')
 
 class Tag
 
-  attr_reader :id, :type
+  attr_reader :id, :name
 
   def initialize(options)
     @id = options['id'].to_i
-    @type = options['type']
+    @name = options['name']
   end
 
   def save()
-    sql = "INSERT INTO tags (type) VALUES ('#{@type}') RETURNING id;"
+    sql = "INSERT INTO tags (name) VALUES ('#{@name}') RETURNING id;"
     tag = SqlRunner.run(sql)
     @id = tag[0]['id'].to_i
   end
 
   def update()
-    sql = "UPDATE tags SET type ='#{@type}';"
+    sql = "UPDATE tags SET type ='#{@name}';"
     SqlRunner.run(sql)
   end
 

@@ -6,15 +6,15 @@ Transaction.delete_all
 Tag.delete_all
 
 tag1 = Tag.new({
-  'type' => 'food'
+  'name' => 'food'
   })
 
 tag2 = Tag.new({
-  'type' => 'clothing'
+  'name' => 'clothing'
   })
 
 tag3 = Tag.new({
-  'type' => 'furniture'
+  'name' => 'furniture'
   })
 
 tag1.save
@@ -32,7 +32,7 @@ transaction2 = Transaction.new({
   'merchant' => 'Aldi',
   'price' => 0.99,
   'date' => '2017-06-20',
-  'tag_id' => tag1.id
+  'tag_id' => tag2.id
   })
 
 transaction1.save
