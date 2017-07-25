@@ -12,7 +12,7 @@ class Transaction
     @price = options['price']
     @date = options['date']
     # @type = options['type'] if options['type']
-    @tag_id = options['tag_id'] if options['tag_id']
+    @tag_id = options['tag_id'].to_i if options['tag_id']
   end
 
   def save()
@@ -29,7 +29,7 @@ class Transaction
   end
 
   def update()
-    sql = "UPDATE transactions SET merchant = '#{@merchant}', price = #{@price}, date = '#{@date}', tag_id = #{@tag_id});"
+    sql = "UPDATE transactions SET merchant = '#{@merchant}', price = #{@price}, date = '#{@date}', tag_id = #{@tag_id} WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 

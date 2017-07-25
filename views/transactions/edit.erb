@@ -9,9 +9,9 @@
 
       <label for="type-selection">Type:</label>
 
-        <select name="tag_id" id="type-selection">
+        <select name="tag_id" id="type-selection" >
           <% @tags.each do |tag| %>
-            <option value=<%= tag.id %>><%= tag.name %></option>
+            <option value=<%= tag.id %> <%= "selected" if @transaction.tag_id == tag.id %>><%= tag.name %></option>
           <% end %>
         </select>
         <br>
@@ -20,6 +20,6 @@
       <input type="price" name="price" id="price-field" value="<%= @transaction.price %>"><br>
 
       <input type="submit" value="Edit"
-      
+
   </fieldset>
 </form>

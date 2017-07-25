@@ -16,14 +16,15 @@ class Tag
     @id = tag[0]['id'].to_i
   end
 
-  def update()
-    sql = "UPDATE tags SET type ='#{@name}';"
+  def delete()
+    sql = "DELETE FROM tags WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def delete()
-    sql = "DELETE FROM tags WHERE id = '#{@id}"
-    SqlRunner.run(sql)
+  def self.find(id)
+    sql = "SELECT * FROM tags WHERE id = #{id};"
+    tag = SqlRunner.run(sql)
+    result = Tag.new(tag.first)
   end
 
   def self.all()
@@ -37,14 +38,18 @@ class Tag
     SqlRunner.run(sql)
   end
 
-  def self.total_amount_spent_per_type(id)
-    sql = "SELECT SUM(price) FROM transactions INNER JOIN tags ON tags.id = transactions.tag_id WHERE tags.id = #{id};"
+  def total_amount_spent_per_type
+    sql = "SELECT SUM(price) FROM transactions INNER JOIN tags ON tags.id = transactions.tag_id WHERE tags.id = #{@id};"
     sum = SqlRunner.run(sql)
-    @type_total = sum[0]['sum']
+    return sum[0]['sum']
 
     # sql = "SELECT SUM(price) FROM transactions INNER JOIN tags ON tags.id = transactions.tag_id WHERE tags.type = #{@type};"
     # why doesn't the above work?
   end
+
+  # def self.select_by_type
+  #   sql = "SELECT * FROM transactions WHERE "
+  # end
   # binding.pry
 
 end
