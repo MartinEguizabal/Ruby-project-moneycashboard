@@ -16,6 +16,16 @@ class Tag
     @id = tag[0]['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE tags SET type ='#{@type}';"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM tags WHERE id = '#{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM tags;"
     tags = SqlRunner.run(sql)

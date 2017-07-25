@@ -3,21 +3,39 @@ require('pry')
 
 class Transaction
 
-  attr_reader :id, :merchant, :price, :date, :type, :tag_id
+  attr_reader :id, :tag_id
+  attr_accessor :merchant, :price, :date, :type
 
   def initialize(options)
     @id = options['id'].to_i
     @merchant = options['merchant']
     @price = options['price']
     @date = options['date']
-    @type = options['type']
+    @type = options['type'] if options['type']
     @tag_id = options['tag_id']
   end
 
   def save()
     sql = "INSERT INTO transactions (merchant, price, date, tag_id) VALUES ('#{@merchant}', #{@price}, '#{@date}', #{@tag_id}) RETURNING id;"
+
     transaction = SqlRunner.run(sql)
     @id = transaction[0]['id'].to_i
+  end
+
+  def update()
+    sql = "UPDATE transactions SET merchant = '#{@merchant}', price = #{@price}, date = '#{@date}', tag_id = #{@tag_id});"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM transactions WHERE id=#{@id};"
+    SqlRunner.run( sql )
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM transactions WHERE id = #{id};"
+    transaction = SqlRunner.run(sql)
+    result = Transaction.new(transaction.first)
   end
 
   def self.all()

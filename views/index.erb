@@ -5,16 +5,27 @@
       <th>Transaction ID</th>
       <th>Date</th>
       <th>Merhcant</th> 
-      <th>Price</th>
       <th>Type</th>
+      <th>Price</th>
     </tr>
-  <% @transactions.each do |transaction| %>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><a href="/transactions/<%= transaction.id %>"><%= transaction.id %></a></td>
+          <td><%= transaction.date %></td> 
+          <td><%= transaction.merchant %></td>
+          <td><%= transaction.type %></td>
+          <td><%= transaction.price %></td>
+          <td>
+            <form action="/transactions/<%= transaction.id %>/edit" method="GET"><input type="submit" value="Edit" /></form>
+          </td>
+          <td>
+            <form action="/transactions/<%= transaction.id %>/delete" method="POST"><input type="submit" value="Delete" /></form>
+          </td>
+        </tr>
+      <% end %>
     <tr>
-      <td><a href="/transactions/<%= transaction.id %>"><%= transaction.id %></a></td>
-      <td><%= transaction.date %></td> 
-      <td><%= transaction.merchant %></td>
-      <td><%= transaction.price %></td>
-      <td><%= transaction.type %></td>
+      <td>Total</td>
+      <td><%= @total %></td>
     </tr>
-  <% end %>
+
 </table>
