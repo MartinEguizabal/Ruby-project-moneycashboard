@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <title>CashMoneyWallet</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/styles.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/table_styles.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/form_styles.css" media="screen">
+  <title>Less Money</title>
 </head>
-<body>
-  <nav>
-    <ul>
-      <li>
-        <a href="/transactions">Transactions</a>
-      </li>
-      <li>
-        <a href="/transactions/new">Add transaction</a>
-      </li>
-      <li>
-        <a href="/tags">Spending types</a>
-      </li>
-      <li>
-        <a href="/tags/new">Add spending type</a>
-      </li>
-    </ul>
-  </nav>
-  <%= yield %>
-</body>
+  <body>
+    <header>
+      <h1 class="start">Less Money</h1>
+      <h2 class="start">... cause yo' pretty sure y' all already spent dat</h2>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/transactions">Yo' spending</a>
+        </li>
+        <li>
+          <a href="/transactions/new">Add spending</a>
+        </li>
+        <li>
+          <a href="/tags">Yo' spending types</a>
+        </li>
+        <li>
+          <a href="/tags/new">Add spending type</a>
+        </li>
+      </ul>
+    </nav>
+    <section>
+
+    <%= yield %>
+
+    </section>
+  </body>
 </html>

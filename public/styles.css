@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'BillionStars';
+  src: url('/BillionStars_PersonalUse.ttf');
+}
+
+.start {
+  font-family: BillionStars;
+}
+
+h1.start {
+  font-size: 340px;
+  font-weight: 100;
+  color: #D4AF37;
+  text-shadow: -5px 0 #000000,0 5px #000000, 5px 0 #000000,0 -5px #000000;
+  margin-top: 40px;
+}
+
+h2.start {
+  font-size: 160px;
+  font-weight: 100;
+  color: white;
+  text-shadow: -4px 0 #D4AF37,0 4px #D4AF37, 4px 0 #D4AF37,0 -4px #D4AF37;
+  margin-top: -240px;
+  text-align: right;
+  margin-right: 40px;
+}
+
+nav {
+  margin-top: -120px;
+  font-size: 20px;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #D4AF37;
+}
+
+
+h1 {
+  font-family: BillionStars;
+  font-size: 100px;
+  font-weight: 100;
+  color: #D4AF37;
+  text-shadow: -5px 0 #000000,0 5px #000000, 5px 0 #000000,0 -5px #000000;
+}
+
+body {
+  background-image: url("/funny-lil-wayne.jpg");
+  height: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*#submit_button {
+  width: 5px;
+  height: 5px;
+}*/
+
+input[type=submit] {
+  width: 150px;
+  height: 75px;
+  text-align: center;
+}

@@ -1,31 +1,38 @@
-<h1>Transactions:</h1>
-
- <table>
-    <tr>
-      <th>Transaction ID</th>
-      <th>Date</th>
-      <th>Merhcant</th> 
-      <th>Type</th>
-      <th>Price</th>
-    </tr>
-      <% @transactions.each do |transaction| %>
+<section id="index_tables">
+  <h1>Transactions:</h1>
+     <table id="main_table">
         <tr>
-          <td><%= transaction.id %></td>
-          <td><%= transaction.date %></td>
-          <td><%= transaction.merchant %></td>
-          <td><%= transaction.tag.name %></td>
-          <td><%= transaction.price %></td>
-          <td>
-            <form action="/transactions/<%= transaction.id %>/edit" method="GET"><input type="submit" value="Edit" /></form>
-          </td>
-          <td>
-            <form action="/transactions/<%= transaction.id %>/delete" method="POST"><input type="submit" value="Delete" /></form>
-          </td>
+          <th>Transaction ID</th>
+          <th>Date</th>
+          <th>Merchant</th> 
+          <th>Type</th>
+          <th>Price</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
-      <% end %>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.id %></td>
+              <td><%= transaction.date %></td>
+              <td><%= transaction.merchant %></td>
+              <td><%= transaction.tag.name %></td>
+              <td>£<%= transaction.price %></td>
+              <td>
+                <form action="/transactions/<%= transaction.id %>/edit" method="GET"><input type="submit" value="Edit" /></form>
+              </td>
+              <td>
+                <form action="/transactions/<%= transaction.id %>/delete" method="POST"><input type="submit" value="Delete" /></form>
+              </td>
+            </tr>
+          <% end %>
+      </table>
+      <br>
+      <table id="total_table">
+        <tr>
+          <td><div class="total">Total:</div></td>
+          <td><div class ="total_figure">£<%= @total %></div></td>
+        </tr>
+      </table>
+    <!--     <form action="/transactions" method="get"><input name="start_date"  type="text"/></form> -->
 
-    <tr>
-      <td>Total</td>
-      <td><%= @total %></td>
-    </tr>
-</table>
+</section>

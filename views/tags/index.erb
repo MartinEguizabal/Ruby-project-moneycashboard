@@ -1,21 +1,24 @@
-<h1>Spending types:</h1>
-
- <table>
+<section id="index_tables">
+  <h1>Spending types:</h1>
+  <table id="main_table">
     <tr>
       <th>Type ID</th>
       <th>Type</th>
       <th>Total spent</th>
+      <th>Delete</th>
     </tr>
       <% @tags.each do |tag| %>
         <tr>
           <td><%= tag.id %></td>
           <td><%= tag.name %></td>
 
-          <td><%= tag.total_amount_spent_per_type %></td>
+          <td>£<%= tag.total_amount_spent_per_type %></td>
           <td>
-            <form action="/tags/<%= tag.id %>/delete" method="POST"><input type="submit" value="Delete" /></form>
+            <form action="/tags/<%= tag.id %>/delete" method="POST">
+              <input type="submit" value="Delete" />
+            </form>
           </td>
         </tr>
       <% end %>
-
-</table>
+  </table>
+</section>

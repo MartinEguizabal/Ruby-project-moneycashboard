@@ -24,8 +24,8 @@ class Transaction
 
   def tag()
     sql = "SELECT tags.* FROM tags WHERE tags.id = #{@tag_id};"
-    tag = SqlRunner.run(sql)
-    return Tag.new(tag[0])
+    tag = SqlRunner.run(sql)[0]
+    return Tag.new(tag)
   end
 
   def update()
@@ -60,6 +60,8 @@ class Transaction
     sum = SqlRunner.run(sql)
     @total = sum[0]['sum']
   end
+
+
 
   # def self.find_all_with_type
   #   # sql = "SELECT tags.type, transactions.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id"
